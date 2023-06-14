@@ -1,33 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import Head from 'next/head';
+import { Helmet } from 'react-helmet';
 import { Container, Typography, Button, Grid } from '@mui/material';
 import { Skeleton, SkeletonCircle } from '@mui/material';
 import { Divider } from '@mui/material';
-import { SimpleGrid } from '@mui/material';
+import { Grid } from '@mui/material';
 import { Icon } from '@mui/material';
-import { FcDonate, FcShare, FcMoneyTransfer } from 'react-icons/fc';
+import MonetizationOnOutlinedIcon from '@mui/icons-material/MonetizationOnOutlined';
+import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
+import AttachMoneyOutlinedIcon from '@mui/icons-material/AttachMoneyOutlined';
 import { Link } from '@mui/material';
 import { ExternalLinkIcon } from '@mui/icons-material';
-import { Stack, Flex, Typography, useColorModeValue } from '@mui/material';
+import { Stack, Flex, useTheme } from '@mui/material';
 
-import CampaignCard from '../components/CampaignCard';
-import Campaign from '../ethereum/campaign';
+import CampaignPaper from './card';
+const theme = useTheme();
 
 const Feature = ({ title, text, icon }) => {
     return (
       <Stack>
-        <Flex
+        <Stack
           width={16}
           height={16}
           alignItems="center"
           justifyContent="center"
           color="white"
           borderRadius="full"
-          backgroundColor={useColorModeValue('gray.100', 'gray.700')}
+          backgroundColor = {theme.palette.mode === "light" ? 'gray.100' : 'gray.700'}
           marginBottom={1}
         >
           {icon}
-        </Flex>
+        </Stack>
         <Typography fontWeight={600} variant="body1">{title}</Typography>
         <Typography color={useColorModeValue('gray.500', 'gray.200')} variant="body2">{text}</Typography>
       </Stack>
@@ -64,14 +66,14 @@ export default function Home({ campaigns }) {
 
   return (
     <div>
-      <Head>
+      <Helmet>
         <title>BetterFund</title>
         <meta
           name="description"
           content="Transparent Crowdfunding in Blockchain"
         />
         <link rel="icon" href="/logo.svg" />
-      </Head>
+      </Helmet>
       <main>
         <Container py={{ base: 4, md: 12 }} maxWidth="7xl" align="left">
           <Typography
@@ -112,9 +114,9 @@ export default function Home({ campaigns }) {
           <Divider marginTop={4} />
 
           {campaignList.length > 0 ? (
-            <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10} py={8}>
+            <Grid columns={{ base: 1, md: 3 }} spacing={10} py={8}>
               {campaignList.map((el, i) => (
-                <CampaignCard
+                <CampaignPaper
                   key={i}
                   name="{el[5]}"
                   description={el[6]}
@@ -126,13 +128,13 @@ export default function Home({ campaigns }) {
                   ethPrice={ethPrice}
                 />
               ))}
-            </SimpleGrid>
+            </Grid>
           ) : (
-            <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10} py={8}>
+            <Grid columns={{ base: 1, md: 3 }} spacing={10} py={8}>
               <Skeleton height="25rem" />
               <Skeleton height="25rem" />
               <Skeleton height="25rem" />
-            </SimpleGrid>
+            </Grid>
           )}
         </Container>
         <Container py={{ base: 4, md: 12 }} maxWidth="7xl" id="howitworks">
@@ -143,23 +145,23 @@ export default function Home({ campaigns }) {
             </Typography>
           </Grid>
           <Divider marginTop={4} />
-          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10} py={8}>
+          <Grid columns={{ base: 1, md: 3 }} spacing={10} py={8}>
             <Feature
-              icon={<Icon as={FcDonate} sx={{ width: 10, height: 10 }} />}
+              icon={<Icon as={MonetizationOnOutlinedIcon} sx={{ width: 10, height: 10 }} />}
               title="Create a Campaign for Fundraising"
               text="It’ll take only 2 minutes. Just enter a few details about the funds you are raising for."
             />
             <Feature
-              icon={<Icon as={FcShare} sx={{ width: 10, height: 10 }} />}
+              icon={<Icon as={ShareOutlinedIcon} sx={{ width: 10, height: 10 }} />}
               title="Share your Campaign"
               text="All you need to do is share the Campaign with your friends, family and others. In no time, support will start pouring in."
             />
             <Feature
-              icon={<Icon as={FcMoneyTransfer} sx={{ width: 10, height: 10 }} />}
+              icon={<Icon as={AttachMoneyOutlinedIcon} sx={{ width: 10, height: 10 }} />}
               title="Request and Withdraw Funds"
               text="The funds raised can be withdrawn directly to the recipient when 50% of the contributors approve of the Withdrawal Request."
             />
-          </SimpleGrid>
+          </Grid>
           <Typography variant="h2" component="h2" fontSize="lg" mt={8}>
             For any queries raise an issue on{' '}
             <Link
