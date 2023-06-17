@@ -2,10 +2,9 @@ import { Paper,Box,Typography,IconButton,Tooltip,Card,CardContent,LinearProgress
 import { makeStyles } from '@mui/styles';
 import PhotoIcon from '@mui/icons-material/Photo';
 
-
 const useStyles = makeStyles((theme) => ({
     root: {
-      backgroundColor: theme.palette.mode === 'light' ? 'white' : 'gray.800',
+      backgroundColor: theme.palette.mode === 'light' ? 'white' : '#424242',
       maxWidth: theme.breakpoints.values.md,
       borderWidth: '1px',
       borderRadius: theme.shape.borderRadius,
@@ -46,20 +45,20 @@ const useStyles = makeStyles((theme) => ({
       whiteSpace: 'nowrap',
     },
     tooltip: {
-      backgroundColor: theme.palette.mode === 'light' ? 'white' : 'gray.700',
-      color: theme.palette.mode === 'light' ? 'gray.800' : 'white',
+      backgroundColor: theme.palette.mode === 'light' ? 'white' : '#616161',
+      color: theme.palette.mode === 'light' ? '#424242' : 'white',
       fontSize: '1.2em',
     },
     iconButton: {
       alignSelf: 'center',
-      color: 'teal.400',
+      color: '#26a69a',
     },
     creatorContainer: {
       alignItems: 'center',
       paddingTop: theme.spacing(2),
     },
     creatorText: {
-      color: 'gray.500',
+      color: '#9e9e9e',
       paddingRight: theme.spacing(2),
     },
     balanceContainer: {
@@ -83,9 +82,9 @@ const useStyles = makeStyles((theme) => ({
   
 function CampaignPaper() {
     const classes = useStyles();
-    const imageURL = ''; // Provide the image URL
-    const name = ''; // Provide the name
-    const creatorId = ''; // Provide the creator ID
+    const imageURL = '/campaign_img.jpg'; // Provide the image URL
+    const name = 'Rahul'; // Provide the name
+    const creatorId = 'Shailendra'; // Provide the creator ID
     const balance = 0; // Provide the balance
     const target = 100; // Provide the target
     const ethPrice = 5;
