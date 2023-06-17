@@ -1,19 +1,19 @@
-import { createTheme } from '@mui/system';
+import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
     palette: {
-      mode: 'light', // Set the mode to 'light' or 'dark' based on your preference
+      mode: 'dark', // Set the mode to 'light' or 'dark' based on your preference
       primary: {
-        main: 'white', // Specify your primary color
+        main: '#ffffff', // Specify your primary color
       },
       background: {
-        default: 'gray.800', // Specify the default background color
+        default: '#424242', // Specify the default background color
       },
       text: {
-        primary: 'white', // Specify the primary text color
+        primary: '#ffffff', // Specify the primary text color
       },
       grey: {
-        500: 'gray.500', // Specify custom grey colors
+        500: '#9e9e9e', // Specify custom grey colors
       },
     },
     breakpoints: {
@@ -30,8 +30,8 @@ const theme = createTheme({
     spacing: 8, // Specify the default spacing value
     typography: {
       fontSize: {
-        '2xl': '2rem', // Specify custom font sizes
-        md: '1.2rem',
+        // Specify custom font sizes
+        md: 4,
       },
       fontWeight: {
         semibold: 600, // Specify custom font weights
